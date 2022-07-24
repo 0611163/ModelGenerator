@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using DBUtil;
+
+namespace Models
+{
+    /// <summary>
+    /// #table_comments
+    /// </summary>
+    [Serializable]
+    #table_atrribute
+    public partial class #table_name
+    {
+        #field start
+        /// <summary>
+        /// #field_comments
+        /// </summary>
+        [DBKey]
+        #field_atrribute_value
+        public #data_type #field_name { get; set; }
+        #field end
+    }
+}

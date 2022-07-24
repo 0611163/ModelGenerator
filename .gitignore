@@ -1,0 +1,9 @@
+bin
+obj
+.vs
+packages
+
+*.suo
+*.user
+
+TestResults
