@@ -110,6 +110,7 @@
     <Content Include="Template\class.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Compile Include="Template\AttributeStrings.cs" />
     <Compile Include="Utils\FileHelper.cs" />
     <Compile Include="Utils\InvokeUtil.cs" />
     <Content Include="Template\class_ext.txt">

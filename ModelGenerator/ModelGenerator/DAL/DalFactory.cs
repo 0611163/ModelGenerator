@@ -28,7 +28,7 @@ namespace ModelGenerator.DAL
                     return new OracleDal();
                 case "mssql":
                     return new MSSQLDal();
-                case "npgsql":
+                case "pgsql":
                     return new PostgreSQLDal();
                 default:
                     throw new Exception("数据库类型错误");

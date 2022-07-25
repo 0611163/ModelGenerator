@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using ModelGenerator.DAL;
 using ModelGenerator.Models;
 using ModelGenerator.Enums;
+using ModelGenerator.Template;
 
 namespace ModelGenerator
 {
@@ -176,7 +177,7 @@ namespace ModelGenerator
                         strClass = strClass.Replace("#table_name", tableName);
                         if (tableName.ToUpper() != table.TableName.Trim().ToUpper())
                         {
-                            strClass = strClass.Replace("#table_atrribute", "[DBTable(\"" + table.TableName.Trim() + "\")]");
+                            strClass = strClass.Replace("#table_atrribute", "[" + AttributeStrings.TableAttr + "(\"" + table.TableName.Trim() + "\")]");
                         }
                         else
                         {
@@ -192,7 +193,11 @@ namespace ModelGenerator
 
                             if (!column.PrimaryKey)
                             {
-                                strField = strField.Replace("        [DBKey]\r\n", string.Empty);
+                                strField = strField.Replace("        #field_key\r\n", string.Empty);
+                            }
+                            else
+                            {
+                                strField = strField.Replace("#field_key", "[" + AttributeStrings.FieldKeyAttr + "]");
                             }
 
                             strField = strField.Replace("#data_type", data_type);
@@ -201,11 +206,11 @@ namespace ModelGenerator
 
                             if (fieldName.ToUpper() == column.ColumnName.ToUpper())
                             {
-                                strField = strField.Replace("#field_atrribute_value", "[DBField]");
+                                strField = strField.Replace("#field_atrribute_value", "[" + AttributeStrings.FieldAttr + "]");
                             }
                             else
                             {
-                                strField = strField.Replace("#field_atrribute_value", "[DBField(\"" + column.ColumnName + "\")]");
+                                strField = strField.Replace("#field_atrribute_value", "[" + AttributeStrings.FieldAttr + "(\"" + column.ColumnName + "\")]");
                             }
 
                             sbFields.Append(strField);

@@ -16,7 +16,7 @@ namespace Models
         /// <summary>
         /// #field_comments
         /// </summary>
-        [DBKey]
+        #field_key
         #field_atrribute_value
         public #data_type #field_name { get; set; }
         #field end
