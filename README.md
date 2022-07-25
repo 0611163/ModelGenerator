@@ -2,7 +2,7 @@
 
 1. DBHelper配套的Model生成器
 
-2. 如要支持EntityFramework和EntityFrameworkCore，请修改AttributeStrings类
+2. 如要支持EntityFramework和EntityFrameworkCore，请修改AttributeStrings类和模板
 
 ## 支持的数据库
 
