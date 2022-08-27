@@ -11,6 +11,11 @@ namespace ModelGenerator.Enums
     /// </summary>
     public enum NameModeEnum
     {
+        /// <summary>
+        /// 和数据库中的表名字段名保持一致
+        /// </summary>
+        Default,
+
         Pascal,
 
         AllUpper,

@@ -40,6 +40,11 @@ namespace ModelGenerator.Models
                 return name.ToLower();
             }
 
+            if (mode == NameModeEnum.Default)
+            {
+                return name;
+            }
+
             throw new NotSupportedException();
         }
     }

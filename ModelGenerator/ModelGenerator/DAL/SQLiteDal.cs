@@ -53,7 +53,7 @@ namespace ModelGenerator.DAL
                 column.ColumnName = dr["name"].ToString();
                 column.NotNull = dr["notnull"].ToString() == "1" ? true : false;
                 column.Comments = string.Empty;
-                column.DataType = "string";
+                column.DataType = dr["type"].ToString().Split('(')[0];
                 column.DataScale = string.Empty;
                 column.DataPrecision = string.Empty;
                 if (dr["pk"].ToString() == "1")
@@ -77,7 +77,37 @@ namespace ModelGenerator.DAL
         /// </summary>
         public string ConvertDataType(DBColumn column)
         {
-            return "string";
+            string data_type;
+            switch (column.DataType)
+            {
+                case "INTEGER":
+                    if (column.NotNull)
+                    {
+                        data_type = "long";
+                    }
+                    else
+                    {
+                        data_type = "long?";
+                    }
+                    break;
+                case "REAL":
+                    if (column.NotNull)
+                    {
+                        data_type = "decimal";
+                    }
+                    else
+                    {
+                        data_type = "decimal?";
+                    }
+                    break;
+                case "TEXT":
+                case "BLOB":
+                    data_type = "string";
+                    break;
+                default:
+                    throw new Exception("Model生成器未实现数据库字段类型" + column.DataType + "的转换");
+            }
+            return data_type;
         }
         #endregion
 

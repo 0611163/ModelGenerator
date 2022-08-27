@@ -14,17 +14,17 @@ namespace ModelGenerator.Template
         /// <summary>
         /// 表属性
         /// </summary>
-        public static string TableAttr { get { return "DBTable"; } }
+        public static string TableAttr { get { return "Table"; } }
 
         /// <summary>
         /// 字段属性
         /// </summary>
-        public static string FieldAttr { get { return "DBField"; } }
+        public static string FieldAttr { get { return "Column"; } }
 
         /// <summary>
         /// 主键属性
         /// </summary>
-        public static string FieldKeyAttr { get { return "DBKey"; } }
+        public static string FieldKeyAttr { get { return "Key"; } }
 
     }
 }

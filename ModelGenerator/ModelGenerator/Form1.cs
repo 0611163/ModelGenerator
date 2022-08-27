@@ -47,6 +47,7 @@ namespace ModelGenerator
             nameModeList.Add(new NameMode("Pascal", NameModeEnum.Pascal));
             nameModeList.Add(new NameMode("全大写", NameModeEnum.AllUpper));
             nameModeList.Add(new NameMode("全小写", NameModeEnum.AllLower));
+            nameModeList.Add(new NameMode("Default", NameModeEnum.Default));
 
             cbx1.DataSource = nameModeList;
             cbx1.ValueMember = "Value";
@@ -175,7 +176,7 @@ namespace ModelGenerator
                         string tableComments = table.Comments ?? string.Empty;
                         string strClass = strClassTemplate.Replace("#table_comments", tableComments.Trim().Replace("\r\n", "\r\n    /// ").Replace("\n", "\r\n        /// "));
                         strClass = strClass.Replace("#table_name", tableName);
-                        if (tableName.ToUpper() != table.TableName.Trim().ToUpper())
+                        if (tableName != table.TableName.Trim())
                         {
                             strClass = strClass.Replace("#table_atrribute", "[" + AttributeStrings.TableAttr + "(\"" + table.TableName.Trim() + "\")]");
                         }
@@ -204,7 +205,7 @@ namespace ModelGenerator
                             string fieldName = NameUtil.GetName(column.ColumnName, nameMode);
                             strField = strField.Replace("#field_name", fieldName);
 
-                            if (fieldName.ToUpper() == column.ColumnName.ToUpper())
+                            if (fieldName == column.ColumnName)
                             {
                                 strField = strField.Replace("#field_atrribute_value", "[" + AttributeStrings.FieldAttr + "]");
                             }
